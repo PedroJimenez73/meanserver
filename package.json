@@ -1,0 +1,20 @@
+{
+  "name": "meanserver",
+  "version": "1.0.0",
+  "description": "servidor mean",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "acme",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.6",
+    "morgan": "^1.9.0",
+    "serve-favicon": "^2.4.5"
+  }
+}
