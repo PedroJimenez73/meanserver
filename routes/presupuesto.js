@@ -3,11 +3,20 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Presupuesto = require('../models/presupuesto.js');
 
+/* Get presupuesto por busqueda */
+// router.get('/:busqueda' , function(req, res, next) {
+//   var busqueda = req.params.busqueda;
+//   Presupuesto.find({proveedor: busqueda}, function (err, presupuestos) {
+//     if (err) return next(err);
+//     res.json(presupuestos);
+//   });
+// });
+
 /* Get a todos los presupuestos */
 router.get('/', function(req, res, next) {
-  Presupuesto.find(function (err, products) {
+  Presupuesto.find(function (err, presupuestos) {
     if (err) return next(err);
-    res.json(products);
+    res.json(presupuestos);
   });
 });
 

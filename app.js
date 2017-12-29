@@ -5,12 +5,17 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var presupuesto = require('./routes/presupuesto');
+var proveedor = require('./routes/proveedor');
+var proveedorsearch = require('./routes/proveedorsearch');
+var proveedorbusca = require('./routes/proveedorbusca');
+var factura = require('./routes/factura');
+
 var app = express();
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/appcompras', { useMongoClient: true, promiseLibrary: require('bluebird') })
-  .then(() =>  console.log('connection succesful'))
+mongoose.connect('mongodb://localhost:27017/appcompras', { useMongoClient: true, promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('conectado a la base de datos'))
   .catch((err) => console.error(err));
 
 app.use(function(req, res, next) {
@@ -26,6 +31,12 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/presupuestos', express.static(path.join(__dirname, 'dist')));
 app.use('/presupuesto', presupuesto);
+app.use('/proveedores', express.static(path.join(__dirname, 'dist')));
+app.use('/proveedor', proveedor);
+app.use('/proveedorsearch', proveedorsearch);
+app.use('/proveedorbusca', proveedorbusca);
+app.use('/facturas', express.static(path.join(__dirname, 'dist')));
+app.use('/factura', factura);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
